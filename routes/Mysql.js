@@ -24,20 +24,26 @@ arr.forEach(function (element){
 */
 function str1() {
     let ddd=[];
-    let a=[];
-    const stray= 'Stray228';
+    let sup=[];
+    const stray= "Stray228";
 
     let donater = fs.readFileSync("Книга2.txt", "utf8");
-    let help = donater.split(/\r?\n/).filter(function(x){return x}).map(function(x){return x.split(" ")});
-        help.forEach(function (element) {
+    let helpDonater = donater.split(/\r?\n/).filter(function(x){return x}).map(function(x){return x.split(" ")});
+        helpDonater.forEach(function (element) {
             ddd.push(element[0]);
     });
 
-    a.push(ddd[Math.floor(Math.random() * 200], Math.floor(Math.random() * 1000), 'RUB', stray);
-        const sql = `INSERT donates(donater, amount, currency, streamer) VALUES ?`;
-        connection.query(sql, [a],function (err, results) {
+    sup.push(ddd[Math.floor(Math.random() * 200)], Math.floor(Math.random() * 1000), "RUB", stray);
+    let subarray = []; //массив в который будет выведен результат.
+    for (let i = 0; i <Math.ceil(sup.length/4); i++){
+        subarray[i] = sup.slice((i*4), (i*4) + 4);
+    }
+
+     const sql = `INSERT donates(donater, amount, currency, streamer) VALUES ?`;
+       connection.query(sql, [subarray],function (err, results) {
             if (err) console.log(err);
             console.log(results);
+
 
     });
 }
@@ -46,7 +52,21 @@ while ( n < Math.floor(Math.random() * 20)){
     str1();
     n++;
 }
+
+const users = [
+    ["Bobи", 32,"RUB", "Stray228"],
+
+];
+
 /*
+
+const sql = `INSERT INTO donates(donater,amount, currency, streamer ) VALUES ?`;
+
+connection.query(sql, [users], function(err, results) {
+    if(err) console.log(err);
+    console.log(results);
+});
+
 let a = [];
 let n=0;
     for (let j = 0; j < 25; j++) {
