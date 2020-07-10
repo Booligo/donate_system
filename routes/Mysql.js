@@ -14,29 +14,47 @@ connection.connect(function(err){
         console.log("Подключение к серверу MySQL успешно установлено");
     }
 });
-/*
-let sss=[];
-let streamer = fs.readFileSync("Книга1.csv", "utf8");
-let arr=  streamer.split(/\r?\n/).filter(function(x){return x}).map(function(x){return x.split(";")});
-arr.forEach(function (element){
-    sss.push(element[1]);
-});
-*/
-function str1() {
-    let ddd=[];
-    let sup=[];
-    const stray= "Stray228";
 
+var j=0;
+
+function getRandomList(file,url,i,separator) {
+    let finallyArray=[];
+    let finalList =[];
+    let list = fs.readFileSync(file,url);
+    let helpArr = list.split(/\r?\n/).filter(function(x){return x}).map(function(x){return x.split(separator)});
+
+        helpArr.forEach(function (element) {
+            finallyArray.push(element[i]);
+        });
+            for(let i=0;i<Math.floor(Math.random() * 15); i++){
+                let randomItems =[];
+                randomItems.push(finallyArray[Math.floor(Math.random() *finallyArray.length)]);
+                console.log(randomItems);
+            }
+}
+function str1() {
+    let listDonaters=[];
+    let supArray=[];
+    const stray= "Stray228";
+    let listStreamers=[];
     let donater = fs.readFileSync("Книга2.txt", "utf8");
     let helpDonater = donater.split(/\r?\n/).filter(function(x){return x}).map(function(x){return x.split(" ")});
-        helpDonater.forEach(function (element) {
-            ddd.push(element[0]);
+    helpDonater.forEach(function (element) {
+        listDonaters.push(element[0]);
     });
 
-    sup.push(ddd[Math.floor(Math.random() * 200)], Math.floor(Math.random() * 1000), "RUB", stray);
+    let streamer = fs.readFileSync("Книга1.csv", "utf8");
+    let helpStreamer=  streamer.split(/\r?\n/).filter(function(x){return x}).map(function(x){return x.split(";")});
+    helpStreamer.forEach(function (element){
+        listStreamers.push(element[1]);
+    });
+
+
+
+    supArray.push(listDonaters[Math.floor(Math.random() * 200)], Math.floor(Math.random() * 1000 + 50), "RUB", listStreamers[Math.floor(Math.random() * 100)]);
     let subarray = []; //массив в который будет выведен результат.
-    for (let i = 0; i <Math.ceil(sup.length/4); i++){
-        subarray[i] = sup.slice((i*4), (i*4) + 4);
+    for (let i = 0; i <Math.ceil(supArray.length/4); i++){
+        subarray[i] = supArray.slice((i*4), (i*4) + 4);
     }
 
      const sql = `INSERT donates(donater, amount, currency, streamer) VALUES ?`;
@@ -48,15 +66,16 @@ function str1() {
     });
 }
 let n=0;
-while ( n < Math.floor(Math.random() * 20)){
-    str1();
+while ( n < 1000){
+
+        str1();
+    }
     n++;
 }
 
-const users = [
-    ["Bobи", 32,"RUB", "Stray228"],
+//getRandomList("Книга2.txt","utf8",0," ");
 
-];
+
 
 /*
 
