@@ -1,10 +1,12 @@
-var express = require('express');
-var router = express.Router();
-router.post('/', function (req, res , next) {
-    var name = req.body.nickName;
-    var sum = req.body.summa;
-    var txt = req.body.txt;
-    res.send("Наш благодеятель " + name + `заданатил ${sum} rub ` + "И пожелал: "+ txt );
+const express = require('express');
+const router = express.Router();
+
+router.post('/donate/form', function (req, res , next) {
+    var row = [[req.body.donater,req.body.amount,req.body.currency,req.body.streamer]];
+
+        res.send({ message: "Donate accepted." });
+    //res.send('hi ivan');
+
+
 });
 
-module.exports = router;

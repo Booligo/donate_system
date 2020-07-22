@@ -31,18 +31,12 @@ const schemas =  Joi.object({
         streamer: Joi.string()
     });
 
-
-
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to bezkoder application." });
 });
-
-
 
 app.get("/all_streamers",(req, res) => {
     const sql = "SELECT * FROM personal_streamer_donations";
@@ -64,7 +58,10 @@ app.get("/all_streamers/:id",(req,res) => {
 });
 
 
-app.post("/donate", validator.query(schemas) , (req, res) => {
+app.post(
+    "/donate",
+    validator.query(schemas),
+    (req, res) => {
     const form = [[req.body.donater,req.body.amount, req.body.currency, req.body.streamer]];
     const  sql = "INSERT INTO donates(donater,amount,currency,streamer) VALUES ?";
     const query = connection.query(sql, [form],(err, results) => {
