@@ -38,10 +38,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/all_streamers", (req, res) => {
-    let {page,interval} = req.query;
-    const number_of_page = Number(page);
-    const limit = Number(interval);
-    const start_index = (number_of_page - 1) *limit ;
+    let {page,size} = req.query;
+    const page_number = Number(page);
+    const limit = Number(size);
+    const start_index = (page_number - 1) *limit ;
     const sql = `SELECT * FROM personal_streamer_donations LIMIT ${start_index},${limit}`;
     const query = connection.query(sql, (err, results) => {
         if (err) throw err;
