@@ -38,17 +38,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/all_streamers", (req, res) => {
-    let {page,limit} = req.query;
-    const num = Number(page);
-    const gap = Number(limit);
-    const sql = `SELECT * FROM personal_streamer_donations LIMIT ${(num-1)*gap},${gap}`;
+    let {page,interval} = req.query;
+    const number_of_page = Number(page);
+    const limit = Number(interval);
+    const start_index = (number_of_page - 1) *limit ;
+    const sql = `SELECT * FROM personal_streamer_donations LIMIT ${start_index},${limit}`;
     const query = connection.query(sql, (err, results) => {
         if (err) throw err;
-        res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+        res.send(results);
     });
 
 });
-
 
 app.get("/all_streamers/:id", (req, res) => {
 
