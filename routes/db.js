@@ -14,4 +14,4 @@ connection.connect(function(err){
         console.log("Подключение к серверу MySQL успешно установлено");
     }
 });
-module.exports.connection = connection;
+exports.connection = connection;

@@ -25,7 +25,7 @@ router.get('/nnn', async function (req, res, next) {
         .catch(err => {
             res.send('smth going wrong');
         });
-    console.log(3);
+console.log(3);
 });
 
 

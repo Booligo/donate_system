@@ -1,20 +1,20 @@
 const express = require('express');
 const app = express();
-const createError = require('http-errors');
+//const createError = require('http-errors');
 const bodyParser = require('body-parser');
-const Joi = require('joi');
+//const Joi = require('joi');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const redis = require('redis');
-const validator = require('express-joi-validation').createValidator({});
+//const validator = require('express-joi-validation').createValidator({});
 const router = express.Router();
 //const indexDb = require('./routes/db');
-//const donateRouter = require('./routes/Donate');
-//const streamer = require('./routes/streamer');
-//const db_update = require('./routes/db_update');
+const donateRouter = require('./routes/post_donate');
+const streamer = require('./routes/streamer');
+const Users = require('./routes/users');
 
-
+/*
 const mysql = require("mysql2");
 const connection = mysql.createConnection({
     host: "localhost",
@@ -40,12 +40,13 @@ const schemas = Joi.object({
     streamer: Joi.string()
 });
 
-
+*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-//app.use('/all_streamers', donateRouter);
-//app.use('/all_streamers/:id', streamer);
-//app.use('/donate', db_update);
+app.use('/donate', donateRouter);
+app.use('/all_streamers/:id', streamer);
+app.use('/all_streamers', Users);
+/*
     let cache = {};
 
 function get_list_of_streamers(page,size,callback){
@@ -138,7 +139,7 @@ function update_db(values,callback){
         console.log('hello');
     });
 
-
+*/
 app.listen(3000, () => {
     console.log("Server is running on port 3000.");
 });

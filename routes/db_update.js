@@ -1,32 +1,20 @@
-const express = require('express');
-const router = express.Router();
-const Joi = require('joi');
-
-
-const validator = require('express-joi-validation').createValidator({});
-const schemas = Joi.object({
-    donater: Joi.string(),
-    amount: Joi.number(),
-    currency: Joi.string(),
-    streamer: Joi.string()
-});
-
+const createError = require('http-errors');
+const cache = require('./cache');
+const connection = require('./db');
 function del(){
     for(var key in cache){
         delete cache[key];
     }
 }
-router.post(
-    "/donate",
-    validator.query(schemas),
-    (req, res) => {
-        const form = [[req.body.donater, req.body.amount, req.body.currency, req.body.streamer]];
-        const sql = "INSERT INTO donates(donater,amount,currency,streamer) VALUES ?";
-        const query = connection.query(sql, [form], (err, results) => {
-            if (err) throw err;
-            del();
-            res.send(results);
-        });
-    });
 
-module.exports = router;
+function update_db(values,callback){
+    const sql = "INSERT INTO donates(donater,amount,currency,streamer) VALUES ?";
+    const query = connection.query(sql, values, (err, results) => {
+        if (err) {
+            callback(createError(err));
+        }else
+            del();
+        callback(null,results);
+    });
+}
+exports.update_db = update_db();
