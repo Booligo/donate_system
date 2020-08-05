@@ -8,7 +8,7 @@ var logger = require('morgan'); //подкл в перемен moodule 'morgan' 
 var indexRouter = require('./routes/cache'); // маршрут на создание
 var usersRouter = require('./routes/streamers');// маршрут на создание
 var contactsRouter = require('./routes/contact');// маршрут на создание
-var donateRouter = require('./routes/get_list_of_streamers');
+var donateRouter = require('./functions/get_list_of_streamers');
 
 var app = express(); // cоздание оbъекта которое представляет приложение
 
