@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const post_values = require('../Functions/get_values');
-const our_values = require('../Functions/get_values');
 const validator = require('express-joi-validation').createValidator({});
 const Joi = require('joi');
 
