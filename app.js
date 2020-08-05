@@ -5,10 +5,10 @@ var path = require('path'); //подкл в перемен moodule 'path' (пр�
 var cookieParser = require('cookie-parser'); //подкл в перемен moodule 'cookie-parser' (промежуточное ПО для анализа куки-файлов)
 var logger = require('morgan'); //подкл в перемен moodule 'morgan' (промежуточное ПО для типизации ответов http и для логирования ошибок)
 
-var indexRouter = require('./routes/index'); // маршрут на создание
-var usersRouter = require('./routes/users');// маршрут на создание
+var indexRouter = require('./routes/cache'); // маршрут на создание
+var usersRouter = require('./routes/streamers');// маршрут на создание
 var contactsRouter = require('./routes/contact');// маршрут на создание
-var donateRouter = require('./routes/Donate');
+var donateRouter = require('./routes/get_list_of_streamers');
 
 var app = express(); // cоздание оbъекта которое представляет приложение
 
