@@ -9,13 +9,13 @@ const router = express.Router();
 const indexDb = require('./routes/db');
 const donateRouter = require('./routes/post_donate');
 const streamerRouter = require('./routes/streamer');
-const UsersRouter = require('./routes/streamers');
+const usersRouter = require('./routes/streamers');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', donateRouter);
 app.use('/', streamerRouter);
-app.use('/', UsersRouter);
+app.use('/', usersRouter);
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000.");
