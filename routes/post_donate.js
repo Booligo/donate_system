@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const post_values = require('../Functions/get_values');
+const send_donate = require('../Functions/add_donate_in_db');
 const validator = require('express-joi-validation').createValidator({});
 const Joi = require('joi');
 
@@ -15,7 +15,8 @@ router.post(
     '/donate',
     validator.query(schemas),
     (req, res) => {
-            post_values.insert_values( req.body.donater, req.body.amount, req.body.currency, req.body.streamer,(err, data) => {
+         const {donater,amount,currency,streamer}= req.body;
+            send_donate.add_donate_into_db(donater, amount, currency, streamer,(err, data) => {
                 if (err) {
                     res.status(500);
                     res.send(err);
