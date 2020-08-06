@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const send_donate = require('../Functions/add_donate_in_db');
+const send_donate = require('../functions/add_donate_into_db');
 const validator = require('express-joi-validation').createValidator({});
 const Joi = require('joi');
 
