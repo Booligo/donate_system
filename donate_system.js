@@ -8,7 +8,7 @@ const router = express.Router();
 
 const indexDb = require('./routes/database');
 const donateRouter = require('./routes/route_post_send_donate');
-const streamerRouter = require('./routes/route_get_id');
+const streamerRouter = require('./routes/route_get_streamer_by_id');
 const streamersRouter = require('./routes/route_get_streamers');
 
 app.use(bodyParser.json());
