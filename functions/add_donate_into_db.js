@@ -1,12 +1,12 @@
 const createError = require('http-errors');
 const caches = require('./get_list_of_streamers');
-const connection = require('../routes/db');
+const connection = require('../routes/database');
 
 /**
  * Clearing the cache.
  * This function is needed in order to clear the cache, since when the donation is poured out, our data in the cache is no longer relevant and we must delete it.
  * @param {string} cache - our temporary storage server(input).
- * @returns {string} empty cache
+ * @returns {string} cache
  */
 function delele_cache(){
     for(var key in caches.cache){
@@ -20,7 +20,7 @@ function delele_cache(){
  * @param {string} amount - the amount that а person has donated to the streamer.
  * @param {string} currency - the currency that the man donated.
  * @param {string}streamer - this is the person (streamer) who was donated.
- * @param {function} callback - this is the function that will be executed after calling the main function (add_donate_into_db) and executing the content of the code.
+ * @param {function} callback - this is the function that will be executed after calling the main function (get_streamer_by_id) and executing its code contents
  * @returns {function} callback
  */
 

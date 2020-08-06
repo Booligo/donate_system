@@ -1,12 +1,12 @@
 const createError = require('http-errors');
-const connection = require('../routes/db');
+const connection = require('../routes/database');
 let cache = {};
 
 /**
  * Getting a list of streamers.
- * @param {string} page - page number the user wants to see.
- * @param {string} size - the amount of streamers the user wants to see.
- * @param {function} callback - this is the function that will be executed after calling the main function (get_list_of_streamers) and executing the content of the code.
+ * @param {integer} page - page number the user wants to see.
+ * @param {integer} size - the amount of streamers the user wants to see.
+ * @param {function} callback - this is the function that will be executed after calling the main function (get_streamer_by_id) and executing its code contents
  * @returns {function} callback
  */
 

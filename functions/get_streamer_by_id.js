@@ -1,10 +1,10 @@
-const connection = require('../routes/db');
+const connection = require('../routes/database');
 const createError = require('http-errors');
 
 /**
  * Getting data for one specific streamer.
  * @param {string} streamer - streamer on which to receive data.
- * @param {function} callback - this is the function that will be executed after calling the main function (get_streamer_by_id) and executing the content of the code.
+ * @param {function} callback - this is the function that will be executed after calling the main function (get_streamer_by_id) and executing its code contents.
  * @returns {function} callback
  */
 function get_streamer_by_id(streamer, callback){
