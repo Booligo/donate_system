@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const route_get_streamers= require('../functions/get_list_of_streamers.js');
-router.get('/streamers', (req, res) => {
+const route_get_streamers= require('../storage/get_list_of_streamers.js');
+router.get('/', (req, res) => {
     let {page,size} = req.query;
     page = Number(page);
     size = Number(size);
