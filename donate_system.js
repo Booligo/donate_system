@@ -7,14 +7,12 @@ const logger = require('morgan');
 const router = express.Router();
 
 const indexDb = require('./lib/database');
-const donateRouter = require('./routes/route_post_send_donate');
-const streamerRouter = require('./routes/route_get_streamer_by_id');
-const streamersRouter = require('./routes/route_get_streamers');
+const donateRouter = require('./routes/send_donate');
+const streamersRouter = require('./routes/streamers');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', donateRouter);
-app.use('/streamers', streamerRouter);
 app.use('/streamers', streamersRouter);
 
 app.listen(3000, () => {
