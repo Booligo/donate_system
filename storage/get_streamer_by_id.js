@@ -1,6 +1,5 @@
 const connection = require('../lib/database');
 const createError = require('http-errors');
-
 /**
  * Getting data for one specific streamer.
  * @param {string} streamer - streamer on which to receive data.

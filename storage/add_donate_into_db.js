@@ -1,10 +1,6 @@
 const createError = require('http-errors');
-const clearing_storage = require('./delete_cache');
+const clearing_storage = require('../lib/cache');
 const connection = require('../lib/database');
-
-
-
-
 /**
  * Add donate into database donates.
  * @param {string} donater - nickname of the person who donated money.
@@ -14,7 +10,6 @@ const connection = require('../lib/database');
  * @param {function} callback - this is the function that will be executed after calling the main function (get_streamer_by_id) and executing its code contents
  * returns {function} callback(results), results = it's data(what we get as a result of the main function) that will be used in the callback.
  */
-
 function add_donate_into_db(donater, amount, currency, streamer, callback){
     const values = [[donater,amount,currency,streamer]];
     const sql = "INSERT INTO donates(donater,amount,currency,streamer) VALUES ?";
