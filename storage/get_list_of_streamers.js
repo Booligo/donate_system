@@ -7,7 +7,7 @@ const get_cache =  require('../lib/cache');
  * @param {integer} page - page number the user wants to see.
  * @param {integer} size - the amount of streamers the user wants to see.
  * @param {function} callback - this is the function that will be executed after calling the main function (get_streamer_by_id) and executing its code contents.
- * returns {function} callback(results),results = it's data that will be used in the callback.
+ * returns {function} callback(results),results = it's data(what we get as a result of the main function) that will be used in the callback.
  */
 
 function get_list_of_streamers(page,size,callback){

@@ -12,7 +12,7 @@ const connection = require('../lib/database');
  * @param {string} currency - the currency that the man donated.
  * @param {string}streamer - this is the person (streamer) who was donated.
  * @param {function} callback - this is the function that will be executed after calling the main function (get_streamer_by_id) and executing its code contents
- * returns {function} callback(results), results = it's data that will be used in the callback.
+ * returns {function} callback(results), results = it's data(what we get as a result of the main function) that will be used in the callback.
  */
 
 function add_donate_into_db(donater, amount, currency, streamer, callback){
