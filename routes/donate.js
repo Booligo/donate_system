@@ -14,7 +14,7 @@ router.post(
     validator.query(schemas),
     (req, res) => {
          const {donater,amount,currency,streamer}= req.body;
-            donate.add_donate_into_db(donater, amount, currency, streamer,(err, data) => {
+            donate(donater, amount, currency, streamer,(err, data) => {
                 if (err) {
                     res.status(500);
                     res.send(err);

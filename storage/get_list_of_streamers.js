@@ -11,16 +11,17 @@ const cache =  require('../lib/cache');
 function get_list_of_streamers(page,size,callback){
     const start_index = (page - 1) *size ;
     const sql = `SELECT * FROM personal_streamer_donations LIMIT ${start_index},${size}`;
-    if (cache.has_propety(sql)) {
+    if (cache.has_cache(sql)) {
         callback(null,cache.get_cache()[sql]);
     }else {
         const query = connection.query(sql, (err, results) => {
             if (err) {
                 callback(createError(err),null);
-            }else
+            }else {
                 cache.get_cache()[sql] = results;
-            callback(null,results);
+                callback(null,results);
+            }
         });
     }
 }
-module.exports.get_list_of_streamers = get_list_of_streamers;
+module.exports = get_list_of_streamers;

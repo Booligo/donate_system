@@ -11,8 +11,9 @@ function get_streamer_by_id(streamer, callback){
     const query = connection.query(sql, streamer, (err, results) => {
         if (err) {
             callback(createError(err),null);
-        }else
-            callback(null,results);
+        }else {
+            callback(null, results);
+        }
     });
 }
-module.exports.get_streamer_dy_id = get_streamer_by_id;
+module.exports =  get_streamer_by_id;
