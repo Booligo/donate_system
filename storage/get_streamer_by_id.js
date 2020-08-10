@@ -16,4 +16,4 @@ function get_streamer_by_id(streamer, callback){
         }
     });
 }
-module.exports =  get_streamer_by_id;
+module.exports =  {get_streamer_id:get_streamer_by_id};

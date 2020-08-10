@@ -24,4 +24,4 @@ function get_list_of_streamers(page,size,callback){
         });
     }
 }
-module.exports = get_list_of_streamers;
+module.exports = {get_streamers:get_list_of_streamers};

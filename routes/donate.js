@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const donate = require('../storage/add_donate_into_db');
+const {donate} = require('../storage/add_donate_into_db');
 const validator = require('express-joi-validation').createValidator({});
 const Joi = require('joi');
 const schemas = Joi.object({

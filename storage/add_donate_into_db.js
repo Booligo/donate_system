@@ -22,5 +22,6 @@ function add_donate_into_db(donater, amount, currency, streamer, callback){
         }
     });
 }
-module.exports = add_donate_into_db;
+module.exports = {donate:add_donate_into_db};
+
 
