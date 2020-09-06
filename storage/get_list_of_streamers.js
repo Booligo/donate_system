@@ -1,7 +1,6 @@
 const createError = require('http-errors');
 const connection = require('../lib/database');
 const cache =  require('../lib/cache');
-
 /**
  * Getting a list of streamers.
  * @param {integer} page - page number the user wants to see.
