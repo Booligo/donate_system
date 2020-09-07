@@ -13,14 +13,12 @@ router.post(
     '/donate',
     validator.query(schemas),
     (req, res) => {
-         const {donater,amount,currency,streamer}= req.body;
-            donate(donater, amount, currency, streamer,(err, data) => {
-                if (err) {
-                    res.status(500);
-                    res.send(err);
-                } else {
-                    res.send(data);
-                }
-            });
+        const {donater, amount, currency, streamer} = req.body;
+        donate(donater, amount, currency, streamer).then(( data) => {
+            res.send(data);
+        }).catch((err) => {
+            res.status(500);
+            res.send(err);
+        });
     });
 module.exports = router;
