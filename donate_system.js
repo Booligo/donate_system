@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const http = require('http').createServer(app);
+global.io = require('socket.io')(http);
 const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -12,7 +14,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', donateRouter);
 app.use('/streamers', streamersRouter);
-app.listen(3000, () => {
+
+io.on('connection', (socket) => {
+    console.log('Connected to socket');
+});
+
+http.listen(3000, () => {
     console.log("Server is running on port 3000.");
 });
-module.exports = app;
+module.exports = http;
